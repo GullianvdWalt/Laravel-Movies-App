@@ -6,14 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Movies</title>
     <link rel="stylesheet" href="/css/app.css">
-
-
-<script src="https://use.fontawesome.com/13453b99df.js"></script>
 </head>
 <body class="font-sans bg-white text-teal-400">
     <nav class="border-b border-teal-400">
 
-        <div class="container mx-auto flex flex-cols md:flex-row items-center justify-between px-4 py-6">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between px-4 py-6">
 
             <ul class="flex flex-col md:flex-row items-center">
                 <li>
@@ -22,20 +19,20 @@
                     </a>
                 </li>
                 <li  class="md:ml-16 mt-3 md:mt-0">
-                    <a href="" class="hover:text-gray-700">Movies</a>
+                    <a href="" class="hover:text-teal-600">Movies</a>
                 </li>
                 <li  class="md:ml-16 mt-3 md:mt-0">
-                    <a href="" class="hover:text-gray-700">TV Series</a>
+                    <a href="" class="hover:text-teal-600">TV Series</a>
                 </li>
                 <li  class="md:ml-16 mt-3 md:mt-0">
-                    <a href="" class="hover:text-gray-700">Actors</a>
+                    <a href="" class="hover:text-teal-600">Actors</a>
                 </li>
             </ul>
-            <ul class="flex flex-cols md:flex-row items-center">
-                <div class="relative">
+            <ul class="flex flex-col md:flex-row items-center">
+                <div class="relative mt-3 md:mt-0">
                     <input type="text" name="" id="" class="bg-none rounded-full w-64 px-4 pl-8 py-1 focus:outline-none focus:shadow-outline-teal text-sm border-2 border-teal-400 " placeholder="Search">
                 </div>
-                <div class="ml-4">
+                <div class="md:ml-4 mt-3 md:mt-0">
                     <a href="#">
                         <img src="/images/avatar.png" alt="Avatar" class="rounded-full w-8 h-8">
                     </a>
