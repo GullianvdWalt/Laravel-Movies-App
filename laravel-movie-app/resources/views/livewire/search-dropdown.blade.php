@@ -1,8 +1,17 @@
-    <div class="relative mt-3 md:mt-0">
+    <div class="relative mt-3 md:mt-0" x-data="{ isOpen: true }" @click.away="isOpen = false">
         <!-- Search Input -->
         <input type="text" name="search" id="search"
                class="bg-none rounded-full w-64 px-4 pl-8 py-1 focus:outline-none focus:shadow-outline-teal text-sm border-2 border-teal-400 " placeholder="Search"
-               wire:model.debounce.500ms="search" >
+               wire:model.debounce.500ms="search" autocomplete="off"
+                x-ref="search"
+                 @keydown.window="if (event.keyCode == 191){
+                        $refs.search.focus();
+                        event.preventDefault();
+                    }"
+                @focus="isOpen = true"
+                @keydown="isOpen = true"
+                @keydown.escape.window="isOpen = false"
+                @keydown.shift.tab="isOpen = false">
         <!-- Search Icon -->
         <div class="absolute top-0">
             <svg class="fill-current w-4 text-gray-500 mt-2 ml-2" viewBox="0 0 24 24">
@@ -15,15 +24,17 @@
 
         @if (strlen($search) >= 2)
             <!-- Dropdown -->
-            <div class="absolute bg-gray-100 rounded w-64 mt-3 text-sm">
+            <div class="z-50 absolute bg-gray-100 rounded w-64 mt-3 text-sm"
+                x-show.transition.opacity="isOpen">
                  @if ($searchResults->count() > 0)
                     <ul>
                         @foreach ($searchResults as $result)
                             <li class="border-b border-teal-400">
-                                <a href="{{ route('movies.show', $result['id']) }}" class="hover:bg-gray-400 hover:text-cool-gray-50 px-3 py-7 flex items-center">
+                                <a href="{{ route('movies.show', $result['id']) }}" class="hover:bg-gray-400 hover:text-cool-gray-50 px-3 py-7 flex items-center"
+                                    @if ($loop->last) @keydown.tab.exact="isOpen = false" @endif>
                                     <!-- Check if the is a poster -->
                                     @if ($result['poster_path'])
-                                        <img src="https://image.tmdb.org/t/p/w92/{{ $result['poster_path'] }}" alt="poster" class="w-16">
+                                        <img src="https://image.tmdb.org/t/p/w92/{{ $result['poster_path'] }}" alt="poster" class="w-10">
                                     @else
                                         <img src="https://via.placeholder.com/50x75" alt="poster" class="w-8">
                                     @endif
