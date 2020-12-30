@@ -28,10 +28,13 @@
                     <a href="{{ route('movies.index') }}" class="hover:text-teal-600">Movies</a>
                 </li>
                 <li  class="md:ml-16 mt-3 md:mt-0">
-                    <a href="" class="hover:text-teal-600">TV Series</a>
+                    <a href="{{ route('tv.index') }}" class="hover:text-teal-600">TV Series</a>
                 </li>
                 <li  class="md:ml-16 mt-3 md:mt-0">
-                    <a href="" class="hover:text-teal-600">Actors</a>
+                    <a href="{{ route('actors.index') }}" class="hover:text-teal-600">Actors</a>
+                </li>
+                <li  class="md:ml-16 mt-3 md:mt-0">
+                    <a href="" class="hover:text-teal-600">Directors</a>
                 </li>
             </ul>
             <ul class="flex flex-col md:flex-row items-center">
@@ -43,9 +46,14 @@
                 </div>
             </ul>
         </div>
-
     </nav>
     @yield('content')
+    <footer class="border-t border-teal-400 mt-10">
+        <div class="container mx-auto text-sm px-4 py-6">
+            Powered by <a href="https://www.themoviedb.org/documentation/api" class="underline hover:text-gray-300">TMDb API</a>
+        </div>
+    </footer>
     @livewireScripts
+    @yield('scripts')
 </body>
 </html>
