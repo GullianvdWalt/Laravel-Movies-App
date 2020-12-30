@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $movie['title'] )
+
 @section('content')
 
     <div class="movie-info">   <!-- Movie-Info-Start -->

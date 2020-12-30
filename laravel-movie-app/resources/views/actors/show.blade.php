@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+@section('title', $actor['name'] )
+
 @section('content')
 
 <!-- Actor Info Start -->
- <div class="movie-info border-b border-teal-400">
+ <div class="movie-info">
         <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
             <div class="flex-none">
                 <img src="{{ $actor['profile_path'] }}" alt="profile image" class="w-76">
@@ -64,12 +66,12 @@
                 <h4 class="font-semibold mt-12">Known For</h4>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-                    @foreach ($knownForMovies as $movie)
+                    @foreach ($knownFor as $movie_tv)
                         <div class="mt-4">
-                            <a href="{{ route('movies.show', $movie['id'] ) }}">
-                                <img src="{{ $movie['poster_path']}}" alt="poster" class="hover:opacity-75 transition ease-in-out duration-150">
+                            <a href="{{ $movie_tv['linkToPage'] }}">
+                                <img src="{{ $movie_tv['poster_path'] }}" alt="poster" class="hover:opacity-75 transition ease-in-out duration-150">
                             </a>
-                            <a href="{{ route('movies.show', $movie['id'] ) }}">{{$movie['title']}}</a>
+                            <a href="{{ $movie_tv['linkToPage'] }}">{{ $movie_tv['title'] }}</a>
                         </div>
                     @endforeach
                 </div>
@@ -79,7 +81,7 @@
     <!-- Actor Info End -->
 
     <!-- Credits Start -->
-    <div class="credits border-b border-teal-400">
+    <div class="credits border-t border-teal-400">
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-semibold">Credits</h2>
             <ul class="list-disc leading-loose pl-5 mt-8">
