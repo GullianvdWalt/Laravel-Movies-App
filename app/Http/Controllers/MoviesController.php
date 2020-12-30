@@ -19,7 +19,7 @@ class MoviesController extends Controller
         // Http Client From themoviedb, get popular movies from api
         $popularMovies = Http::withToken(config('services.tmdb.token'))
             ->get('https://api.themoviedb.org/3/movie/popular')
-            ->json(['results']);
+            ->json()['results'];
 
         // Http Client From themoviedb, get now playing movies from api
         $nowPlayingMovies = Http::withToken(config('services.tmdb.token'))
@@ -28,7 +28,7 @@ class MoviesController extends Controller
         // Get Genres
         $genres = Http::withToken(config('services.tmdb.token'))
             ->get('https://api.themoviedb.org/3/genre/movie/list')
-            ->json(['genres']);
+            ->json()['genres'];
 
 
         $viewModel = new MoviesViewModel(
